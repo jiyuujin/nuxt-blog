@@ -1,0 +1,68 @@
+name: Node.js
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: deploy
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: _cache_npm_node14
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Install Dependencies
+        run: npm install
+
+      - shell: bash
+        run: |
+          touch .env
+          echo "CTF_BLOG_POST_TYPE_ID=${{ secrets.CTF_BLOG_POST_TYPE_ID }}" >> .env
+          echo "CTF_SPACE_ID=${{ secrets.CTF_SPACE_ID }}" >> .env
+          echo "CTF_CDA_ACCESS_TOKEN=${{ secrets.CTF_CDA_ACCESS_TOKEN }}" >> .env
+          echo "GTAG_ID=${{ secrets.GTAG_ID }}" >> .env
+
+      - name: Lint
+        run: |
+          npm run lint
+
+      - name: Format
+        run: |
+          npm run format
+
+      - name: Transpile
+        run: |
+          yarn build
+        env:
+          CTF_BLOG_POST_TYPE_ID: ${{ secrets.CTF_BLOG_POST_TYPE_ID }}
+          CTF_SPACE_ID: ${{ secrets.CTF_SPACE_ID }}
+          CTF_CDA_ACCESS_TOKEN: ${{ secrets.CTF_CDA_ACCESS_TOKEN }}
+          GTAG_ID: ${{ secrets.GTAG_ID }}
