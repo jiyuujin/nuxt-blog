@@ -1,9 +1,6 @@
 @use '@nekohack/normalize.css/dist/index.css';
 @use 'highlight.js/styles/hybrid.css';
 
-@use 'buy-me-a-coffee';
-@use 'stripe';
-
 /* ダークモードを使わない場合 */
 @use 'single-theme';
 

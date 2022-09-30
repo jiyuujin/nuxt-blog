@@ -51,9 +51,9 @@
         :is-vertical="!isVertical"
       />
 
-      <buy-me-a-coffee />
+      <link-text :item="BUY_ME_A_COFFEE_URL" />
 
-      <stripe-link />
+      <link-text :item="STRIPE_URL" />
 
       <google-adsense />
 
@@ -74,17 +74,17 @@
 </template>
 
 <script setup lang="ts">
+import { LinkText } from 'vue-ui'
 import { useFetchPost, useFetchPosts } from '~/hooks/useBlogData'
 import Endpoints from '~/utils/endpoints.constants'
 import { generalOg, twitterOg } from '~/utils/og.constants'
+import { BUY_ME_A_COFFEE_URL, STRIPE_URL } from '~/utils/constants'
 import { USE_CONTENT, USE_CONTENTFUL, SHOW_LATEST_POSTS } from '~/utils/feature.constants'
 
 import NotifyAlert from '~/components/NotifyAlert.vue'
 import PostCard from '~/components/PostCard.vue'
 import SocialMenu from '~/components/SocialMenu.vue'
 import LoadedMarkdown from '~/components/LoadedMarkdown.vue'
-import BuyMeACoffee from '~/components/BuyMeACoffee.vue'
-import StripeLink from '~/components/StripeLink.vue'
 import GoogleAdsense from '~/components/GoogleAdsense.vue'
 
 const isVertical = ref(true)

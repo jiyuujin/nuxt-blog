@@ -25,3 +25,15 @@ export const TWITTER_URL = (title: string, slug: string) =>
 export const HATENA_URL = (slug: string) => `http://b.hatena.ne.jp/entry/webneko.dev/posts/${slug}`
 export const NOTE_URL = (slug: string) =>
   `https://note.mu/intent/post?url=${Endpoints.BASE_URL}posts/${slug}`
+export const BUY_ME_A_COFFEE_URL = {
+  title: 'Buy Me A Coffee',
+  link: 'https://www.buymeacoffee.com/VqwL7dpxl',
+  placeholder: 'Payment with Buy Me A Coffee.',
+  category: 'buy-me-a-coffee',
+}
+export const STRIPE_URL = {
+  title: 'Stripe',
+  link: 'https://buy.stripe.com/3cs8xk7S55pxg2QdQQ',
+  placeholder: 'Payment with Stripe.',
+  category: 'stripe',
+}
