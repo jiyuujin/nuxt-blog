@@ -4,41 +4,34 @@
   <footer-text>
     <template #subfield>
       <div class="contact-more">
-      <a
-        :href="contactUrl"
-        role="button"
-        aria-pressed="true"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <NotionLogo />
-        <span>問い合わせはこちら</span>
-      </a>
+        <link-text :item="contactUrl">
+          <template #custom>
+            <NotionLogo />
+            <span>{{ contactUrl.placeholder }}</span>
+          </template>
+        </link-text>
       </div>
     </template>
     <template #copyrightfield>
       <div class="copyright">
-      <a
-        href="https://github.com/nekohack"
-        role="button"
-        aria-pressed="true"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        ©︎ jiyuujin LAB. by {{ ' ' }}
-        <NekohackLogo />
-      </a>
+        <link-text :item="copyrightUrl">
+          <template #custom>
+            {{ copyrightUrl.placeholder }}
+            <NekohackLogo />
+          </template>
+        </link-text>
       </div>
     </template>
   </footer-text>
 </template>
 
 <script setup lang="ts">
-import { FooterText, NavText } from 'vue-ui'
-import NotionLogo from '~/assets/notion.svg'
+import { FooterText, LinkText, NavText } from 'vue-ui'
+import NotionLogo from '~/assets/notion_logo.svg'
 import NekohackLogo from '~/assets/nekohack_logo.svg'
 import {
   CONTACT_URL as contactUrl,
+  COPYRIGHT_URL as copyrightUrl,
   TOP_URL as topUrl,
   RELATE_URL_LIST as relateUrls,
 } from '~/utils/constants'

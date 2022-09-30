@@ -45,10 +45,9 @@
         <loaded-markdown>{{ currentPost?.body }}</loaded-markdown>
       </div>
 
-      <social-menu
-        :slug-text="currentPost?.slug"
+      <social-menu-links
+        :slug="currentPost?.slug"
         :title="currentPost?.title"
-        :is-vertical="!isVertical"
       />
 
       <link-text :item="BUY_ME_A_COFFEE_URL" />
@@ -83,11 +82,9 @@ import { USE_CONTENT, USE_CONTENTFUL, SHOW_LATEST_POSTS } from '~/utils/feature.
 
 import NotifyAlert from '~/components/NotifyAlert.vue'
 import PostCard from '~/components/PostCard.vue'
-import SocialMenu from '~/components/SocialMenu.vue'
+import SocialMenuLinks from '~/components/SocialMenuLinks.vue'
 import LoadedMarkdown from '~/components/LoadedMarkdown.vue'
 import GoogleAdsense from '~/components/GoogleAdsense.vue'
-
-const isVertical = ref(true)
 
 const currentPost = await useFetchPost()
 

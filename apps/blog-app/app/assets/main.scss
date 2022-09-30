@@ -32,26 +32,17 @@ body {
 
 .social-menu {
   text-align: center;
+  padding-bottom: 8px;
 
   button {
     background: transparent;
     border: 0;
   }
 
-  svg {
-    width: 36px;
-    height: 36px;
-    margin: 8px;
-  }
-
-  &-vertical {
-    position: sticky;
-    top: 60px;
-    left: 2%;
-  }
-
   &-horizontal {
-    display: inline;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
   }
 }
 
