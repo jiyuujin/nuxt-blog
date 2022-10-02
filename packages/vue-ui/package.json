@@ -5,6 +5,7 @@
   "types": "./index.ts",
   "license": "MIT",
   "scripts": {
+    "format": "prettier *.ts*",
     "lint": "eslint *.ts*"
   },
   "devDependencies": {
