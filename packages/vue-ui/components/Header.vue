@@ -17,23 +17,16 @@
   </div>
 </template>
 
-<script lang="ts">
-import { PropType } from "vue";
+<script setup lang="ts">
+import { Link } from "../../types";
 
-export default {
-  props: {
-    top: {
-      type: Object as PropType<{ title: string; link: string; placeholder: string }>,
-      default: '',
-    },
-    relates: {
-      type: Array as PropType<{ title: string; link: string; placeholder: string }[]>,
-      default: '',
-    },
-  },
-};
+interface HeaderProps {
+  top: Link;
+  relates: Link;
+}
+const props = defineProps<HeaderProps>()
 </script>
 
 <style scoped>
-@import './NavText.styles.scss';
+@import './Header.styles.scss';
 </style>
