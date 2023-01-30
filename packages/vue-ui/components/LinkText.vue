@@ -24,34 +24,19 @@
   </div>
 </template>
 
-<script lang="ts">
-import { PropType } from "vue";
+<script setup lang="ts">
+import { LinkCategory } from "../../types";
+
 import BuyMeACoffeeLogo from "../assets/buy_me_a_coffee_logo.svg";
 import StripeLogo from "../assets/stripe_logo.svg";
 import TwitterLogo from "../assets/twitter_logo.svg";
 import NoteLogo from "../assets/note_logo.svg";
 import HatenaLogo from "../assets/hatena_logo.svg";
 
-export default {
-  components: {
-    BuyMeACoffeeLogo,
-    StripeLogo,
-    TwitterLogo,
-    NoteLogo,
-    HatenaLogo,
-  },
-  props: {
-    item: {
-      type: Object as PropType<{
-        title: string;
-        placeholder: string;
-        link: string;
-        category: 'stripe' | 'buy-me-a-coffee' | 'twitter' | 'note' | 'hatena' | 'custom';
-      }>,
-      default: () => {}
-    },
-  },
-};
+interface LinkTextProps {
+  item: LinkCategory;
+}
+const props = defineProps<LinkTextProps>();
 </script>
 
 <style scoped>
