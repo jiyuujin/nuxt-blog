@@ -1,7 +1,7 @@
 <template>
-  <nav-text :top="topUrl" :relates="relateUrls" />
+  <Header :top="topUrl" :relates="relateUrls" />
   <router-view />
-  <footer-text>
+  <Footer>
     <template #subfield>
       <div class="contact-more">
         <link-text :item="contactUrl">
@@ -22,11 +22,11 @@
         </link-text>
       </div>
     </template>
-  </footer-text>
+  </Footer>
 </template>
 
 <script setup lang="ts">
-import { FooterText, LinkText, NavText } from 'vue-ui'
+import { Footer, Header, LinkText } from 'vue-ui'
 import NotionLogo from '~/assets/notion_logo.svg'
 import NekohackLogo from '~/assets/nekohack_logo.svg'
 import {

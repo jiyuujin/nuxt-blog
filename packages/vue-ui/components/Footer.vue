@@ -7,12 +7,10 @@
   </footer>
 </template>
 
-<script lang="ts">
-export default {
-  //
-};
+<script setup lang="ts">
+const props = defineProps<{}>()
 </script>
 
 <style scoped>
-@import './FooterText.styles.scss';
+@import './Footer.styles.scss';
 </style>
