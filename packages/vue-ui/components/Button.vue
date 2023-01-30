@@ -1,13 +1,17 @@
 <template>
-  <button @click="handleClick">Click Me</button>
+  <CssResetButton v-bind="props">
+    <slot />
+  </CssResetButton>
 </template>
 
-<script lang="ts">
-export default {
-  methods: {
-    handleClick: () => {
-      alert("Woooha!");
-    },
-  },
-};
+<script setup lang="ts">
+import Vue from 'vue'
+import CssResetButton from './CssResetButton.vue'
+
+interface ButtonProps extends Vue.ButtonHTMLAttributes {}
+const props = defineProps<ButtonProps>()
 </script>
+
+<style lang="scss" scoped>
+@import './Button.styles.scss';
+</style>
